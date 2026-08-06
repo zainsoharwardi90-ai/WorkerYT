@@ -1,24 +1,23 @@
-from googletrans import Translator
+from deep_translator import GoogleTranslator
 
-_translator = None
+_translators = {}
 
-def get_translator():
-    global _translator
-    if _translator is None:
-        _translator = Translator()
-    return _translator
+def get_translator(target_lang):
+    if target_lang not in _translators:
+        _translators[target_lang] = GoogleTranslator(source="auto", target=target_lang)
+    return _translators[target_lang]
 
 def translate(text, target_lang):
-    translator = get_translator()
+    translator = get_translator(target_lang)
     last_error = None
 
     for attempt in range(1, 3):
         try:
-            result = translator.translate(text, dest=target_lang)
-            if result is None or not result.text:
+            result = translator.translate(text)
+            if not result:
                 last_error = f"Translation returned an empty or None result for target_lang '{target_lang}'"
                 raise RuntimeError(last_error)
-            return result.text
+            return result
         except RuntimeError:
             if attempt < 2:
                 print(f"[WARN] Translation attempt {attempt}/2 failed: {last_error}. Retrying...")
