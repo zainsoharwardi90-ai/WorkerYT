@@ -18,10 +18,6 @@ def transcribe(audio_path, source_lang=None):
     with open(audio_path, "rb") as f:
         audio_bytes = f.read()
 
-    params = {}
-    if source_lang:
-        params["language"] = source_lang
-
     last_error = None
     for attempt in range(1, MAX_ATTEMPTS + 1):
         try:
@@ -32,7 +28,6 @@ def transcribe(audio_path, source_lang=None):
                     "Authorization": f"Bearer {token}",
                     "Content-Type": "audio/wav",
                 },
-                params=params,
                 timeout=120,
             )
 
