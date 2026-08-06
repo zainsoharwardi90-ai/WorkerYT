@@ -4,7 +4,7 @@ import requests
 
 HF_ENDPOINT = os.environ.get(
     "HF_ENDPOINT",
-    "https://api-inference.huggingface.co/models/openai/whisper-base",
+    "https://router.huggingface.co/hf-inference/models/openai/whisper-base",
 )
 MAX_ATTEMPTS = int(os.environ.get("HF_MAX_ATTEMPTS", "3"))
 RETRY_WAIT_SECONDS = 20
