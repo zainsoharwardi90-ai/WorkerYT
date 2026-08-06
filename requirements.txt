@@ -1,8 +1,7 @@
 fastapi>=0.110.0
 uvicorn>=0.29.0
-openai-whisper>=20231117
-googletrans
+googletrans==4.0.0rc1
 edge-tts>=6.1.0
 cloudinary>=1.40.0
 requests>=2.31.0
-psycopg2-binary
+psycopg2-binary>=2.9.9
