@@ -28,8 +28,8 @@ VOICE_MAP = {
     "vi": "vi-VN-HoaiMyNeural",
 }
 
-RATE = "+5%"
-PITCH = "+0Hz"
+RATE = "+8%"
+PITCH = "-15Hz"
 
 def get_voice(target_lang):
     return VOICE_MAP.get(target_lang, "en-US-JennyNeural")
